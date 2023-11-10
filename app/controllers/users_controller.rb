@@ -5,4 +5,17 @@ class UsersController < ApplicationController
 
     render({:template => "usertemplates/index"})
   end
+
+  def show
+    input_user = params.fetch("useridpath")
+    @currentuser = User.where(:username => input_user ).first
+
+    if @currentuser == nil
+      redirect_to("/users")
+    else
+      render({:template => "usertemplates/show"})
+    end
+    
+  end
+
 end
