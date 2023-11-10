@@ -11,11 +11,11 @@ class UsersController < ApplicationController
     @currentuser = User.where(:username => input_user ).first
 
     if @currentuser == nil
-      redirect_to("/users")
+      redirect_to("/404")
     else
       render({:template => "usertemplates/show"})
     end
-    
+
   end
 
 end
