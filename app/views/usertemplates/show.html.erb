@@ -7,8 +7,8 @@
   <dt>Edit User</dt>
     <dd><%= @currentuser.id %></dd>
 
-</dl
->
+</dl>
+
 <h2>Own photos (<%= @currentuser.own_photos.count%>)</h2>
 
 <table border="1px">
@@ -26,7 +26,8 @@
   <td><%= a_photo.poster.username %></td>
   <td><%= a_photo.caption %></td>
   <td><%= a_photo.created_at %></td>
-  <td><a href="">Show Details</a></td>		
+  <td><a href="/photos/<%= a_photo.id %>">Show Details</a></td>		
 </tr>
+
 <% end %>
 </table>
