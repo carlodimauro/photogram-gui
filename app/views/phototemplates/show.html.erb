@@ -21,9 +21,10 @@
         <input id="imgbox" name="update_img_text" type="text" value="<%= @currentphoto.image %>">
 
         <label for="captionbox">Caption</label>
-        <input id="captionbox" name="update_caption_text" type="text" value="<%= @currentphoto.caption %>">
+        <textarea id="captionbox" name="update_caption_text" rows="4" cols="50"><%= @currentphoto.caption %></textarea>
+
         
-        <button>Update Photo</button>
+        <button>Update photo</button>
         </form>
     </dd>
 
@@ -51,7 +52,8 @@
     </th>
   </tr>
 
-<% @currentphoto.comments.each do |a_comment| %>
+
+<% @currentphoto.comments.order(created_at: :desc).each do |a_comment| %>
 
   <tr>
     <td>
@@ -74,13 +76,14 @@
 
 <form action="/add_comment" method="post">
   <label for="browser_photo_id">Photo ID</label>
-  <input id="browser_photo_id" type=text placeholder="Enter the photo ID" name="input_photo_id" value=952>
+  <input id="browser_photo_id" type="text" placeholder="Enter the photo ID" name="input_photo_id" value="<%=@currentphoto.id%>">
 
   <label for="browser_author_id">Author ID</label>
-  <input id="browser_author_id" type=text placeholder="Enter your author ID" name="input_author_id">
+  <input id="browser_author_id" type="text" placeholder="Enter your author ID" name="input_author_id">
 
   <label for="browser_comment">Comment</label>
-  <textarea id="browser_comment" type=text placeholder="Enter a comment..." name="input_comment"></textarea>
+<textarea id="browser_comment" placeholder="Enter a comment..." name="input_comment" rows="4" cols="50"></textarea>
+
 
   <button>Add comment</button>
 </form>
