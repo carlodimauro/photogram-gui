@@ -27,5 +27,13 @@ def update
 
 end
 
+def add_user
+n = User.new
+n.username = params.fetch("new_user_input")
+n.save
+
+redirect_to("/users/#{n.username}")
+
+end
 
 end
