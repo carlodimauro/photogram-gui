@@ -18,4 +18,27 @@ class PhotosController < ApplicationController
 
     redirect_to("/photos")
   end
+
+
+  def add_photo
+    newphoto = Photo.new
+    newphoto.image = params.fetch("input_image")
+    newphoto.caption = params.fetch("input_caption")
+    newphoto.owner_id = params.fetch("input_owner_id")
+    newphoto.save
+    redirect_to("/photos/#{newphoto.id}")
+
+
+  end
+
+  def edit_photo
+    editid = params.fetch("photoidpath")
+    currentphoto = Photo.where({:id => editid}).first
+    currentphoto.image = params.fetch("update_img_text")
+    currentphoto.caption = params.fetch("update_caption_text")
+    currentphoto.save
+
+    redirect_to("/photos/#{currentphoto.id}")
+  end
+
 end
