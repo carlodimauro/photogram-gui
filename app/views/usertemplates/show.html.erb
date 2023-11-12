@@ -5,7 +5,14 @@
     <dd><%= @currentuser.id %></dd>
 
   <dt>Edit User</dt>
-    <dd><%= @currentuser.id %></dd>
+    <dd>
+    <form action="/update_user/<%= @currentuser.id %>" method="post">
+      <label for="browser_username">Username</label>
+      <input id="browser_username" type="text" name="query_username" value="<%= @currentuser.username %>">
+
+      <button>Update user</button>
+    </form>
+  </dd>
 
 </dl>
 

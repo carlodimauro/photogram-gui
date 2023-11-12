@@ -11,4 +11,11 @@ class PhotosController < ApplicationController
     render({:template => "phototemplates/show"})
   end
 
+  def destroy
+    destroyid = params.fetch("destroypath")
+    photoid = Photo.where({:id => destroyid}).first
+    photoid.destroy
+
+    redirect_to("/photos")
+  end
 end
